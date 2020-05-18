@@ -1,0 +1,33 @@
+{
+
+  "note_list": [
+    {
+      "name_note": "1", 
+      "todo_list": [
+        {
+          "name_todo": "1",
+          "completed": true
+        }, 
+        {
+          "name_todo": "2",
+          "completed": false
+        }
+      ]
+    }, 
+    {
+      "name_note": "2", 
+      "todo_list": [
+        {
+          "name_todo": "3",
+          "completed": false
+        }, 
+        {
+          "name_todo": "55",
+          "completed": false
+        }
+      ]
+    }
+  ]
+
+
+  }
