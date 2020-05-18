@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # todo_list_vue_cli
 
 ## Project setup
@@ -22,3 +23,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# vue_todo_list
+Note list with todo task
+>>>>>>> 53f5e7d687928ffcafeaea77790644763d0a972c
