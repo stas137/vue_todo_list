@@ -1,1 +1,1 @@
-Vue js: Note list with todo task
+Vue js: Note list with todo tasks
