@@ -21,30 +21,32 @@
       <p>Вы действительно хотите отменить редактирование задачи: "{{new_name_todo_comp}}" ?</p>
     </v-popup-edit>
 
-    <div class="todo-item" :class="{ completed: todo.completed }">
-      <div v-if="isEditNameTodo" >
-        <p>Задача: 
-          <input style="width: 100px;" v-model="new_name_todo_comp"> 
-          <button v-on:click="save_name_todo">💾</button>
-          <button v-on:click="back_name_todo" >⬅</button>
-        </p>
+    <div :class="{ completed: todo.completed }">
+      <div v-if="isEditNameTodo">
+          Задача: 
+          <input style="width: 100px;" v-model="new_name_todo_comp" class="v-note-edit_p_display__input"> 
+          <div class = "todo-item">
+          <button v-on:click="save_name_todo"><img src="../../assets/save.png"/></button>
+          <button v-on:click="back_name_todo" ><img src="../../assets/back.png"/></button>
+          </div>
       </div>
       <div v-else>
         <div v-if="todo.completed">
-          <p>
+          
             <input type="checkbox" @click="complete_todo" v-model="todo.completed">
             Задача: {{todo.name_todo}} 
-            <button disabled>✏️</button>
-            <button disabled>🗑️</button>
-          </p>
+            <div class = "todo-item">
+            <button disabled><img src="../../assets/edit-property.png"/></button>
+            <button disabled><img src="../../assets/filled-trash.png"/></button>
+            </div>
         </div>
         <div v-else>
-          <p>
             <input type="checkbox" @click="complete_todo" v-model="todo.completed">
             Задача: {{todo.name_todo}} 
-            <button v-on:click="edit_name_todo">✏️</button>
-            <button v-on:click="show_v_popup">🗑️</button>
-          </p>
+            <div class = "todo-item">
+            <button v-on:click="edit_name_todo"><img src="../../assets/edit-property.png"/></button>
+            <button v-on:click="show_v_popup"><img src="../../assets/filled-trash.png"/></button>
+            </div>
         </div>
       </div>
     </div>
@@ -158,13 +160,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 
     .v-task-edit {
 
-      max-width: 300px;
       margin: 15px;
-      padding: 15px;
+      padding: 5px;
       box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
       border-radius: 5px 5px 5px 5px;
       background-color: white;
@@ -173,6 +174,13 @@ export default {
     .completed {
       text-decoration: line-through;
       color: grey;
+    }
+
+    .todo-item {
+      display: inline-block;
+      line-height: 40px;
+      vertical-align: middle;
+
     }
 
 </style>

@@ -8,12 +8,12 @@ export default {
     GET_NOTE_LIST_FROM_API({commit}){
 
         //return Axios('http://localhost:3000/note_list', {
-        return Axios('http://www.design-k.mcdir.ru/db.json', {
+        return Axios('http://develop1.mcdir.ru/db.json', {
             method: "GET"
         })
-        .then((note_list) => {
-            commit('SET_NOTE_LIST_TO_STATE', note_list.data);
-            return note_list;
+        .then((response) => {
+            commit('SET_NOTE_LIST_TO_STATE', response.data.note_list);
+            return response;
         })
         .catch((error) => {
             console.log(error);

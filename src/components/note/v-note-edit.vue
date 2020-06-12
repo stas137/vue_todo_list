@@ -22,17 +22,18 @@
 
 
     <div v-if="isEditNameTodo">
-      <p>Заметка: 
-        <input style="width: 100px;" v-model="new_name_note_comp"> 
-        <button v-on:click="save_name_note">💾</button>
-        <button v-on:click="back_name_note" >⬅</button>
-      </p>
+      Заметка: 
+        <input style="width: 100px;" v-model="new_name_note_comp" class="v-note-edit_p_display__input">
+        <div class = "todo-item">
+          <button v-on:click="save_name_note"><img src="../../assets/save.png"/></button>
+          <button v-on:click="back_name_note" ><img src="../../assets/back.png"/></button>
+        </div>
     </div>
     <div v-else>
-      <p>Заметка: {{note.name_note}}
-        <button v-on:click="edit_name_note">✏️</button>
-        <!--button v-on:click="show_v_popup">🗑️</button-->
-      </p>
+      Заметка: {{note.name_note}}
+        <button v-on:click="edit_name_note"><img src="../../assets/edit-property.png"/></button>
+        <!--button v-on:click="show_v_popup"><img src="../../assets/filled-trash.png"/></button-->
+      
     </div>
 
 
@@ -48,7 +49,7 @@
     </v-task-edit>
 
 
-    <div style="display:block;">
+    <div>
     <div v-if="isSaveChangesActive">  
       <button @click="save_changes" class="v-note-edit__p_display v-note-edit_p_display__input">
         Сохранить изменения
@@ -286,12 +287,7 @@ export default {
     padding: 15px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
     border-radius: 5px 5px 5px 5px;
-    background-color: rgba(201, 247, 181, 0.3);
-}
-
-.v-note-edit__p_display {
-    align-self: center;
-
+    background-color: rgba(240, 240, 234, 0.438);
 }
 
 .v-note-edit_p_display__input {

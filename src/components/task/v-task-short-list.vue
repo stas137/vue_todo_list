@@ -31,11 +31,11 @@ export default {
 
 .v-task-short-list {
 
-    justify-content: center;
-    align-items: center;
     max-width: 300px;
     margin: 15px;
-    padding: 15px;
+  
+    padding: 1px;
+
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
     border-radius: 5px 5px 5px 5px;
     background-color: white;

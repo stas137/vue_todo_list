@@ -1,21 +1,23 @@
 <template>
   <div class="v-note-main">
 
-    <div class="v-note-main_p_display">
+    <div>
       <input v-model="new_name_note" placeholder="Введите новую заметку" class="v-note-main_p_display__input"> 
       <button @click="add_new_note" class="v-note-main_p_display__input">Добавить новую заметку</button>
     </div> 
 
     <hr />
 
-    <v-note-list 
-      v-for="(note, index) in NOTE_LIST"  
-      v-bind:note="note" 
-      v-bind:key="index" 
-      v-bind:index="index"
-      v-on:Delete_note="delete_note(index)"
-    >
-    </v-note-list>
+    <div class="row">
+      <v-note-list 
+        v-for="(note, index) in NOTE_LIST"  
+        v-bind:note="note" 
+        v-bind:key="index" 
+        v-bind:index="index"
+        v-on:Delete_note="delete_note(index)"
+      >
+      </v-note-list>
+    </div>
   </div>
 </template>
 
@@ -50,15 +52,15 @@ export default {
         'GET_NOTE_LIST_FROM_LOCAL'  
     ]),
 
-    save_to_localStorage(){
-          const parsed = JSON.stringify(this.NOTE_LIST);
+    save_to_localStorage(data){
+          const parsed = JSON.stringify(data);
           localStorage.setItem('note_list', parsed);
           console.log('Data local saved');
     },
 
     load_from_localStorage(name_item){
         this.note_list = JSON.parse(localStorage.getItem(name_item));
-        console.log(this.note_list);
+        console.log('load from local storage = ', this.note_list);
     },
 
     add_new_note: function(){
@@ -69,17 +71,15 @@ export default {
 
           this.new_name_note = '';
 
-          this.save_to_localStorage();
+          this.save_to_localStorage(this.NOTE_LIST);
         }
-        
-
     },
 
     delete_note: function(index){
       console.log("Delete name note, index: ", index);
       this.DELETE_NOTE_IN_NOTE_LIST(index);
 
-      this.save_to_localStorage();
+      this.save_to_localStorage(this.NOTE_LIST);
     },
     
   },
@@ -90,8 +90,10 @@ export default {
 если локальное хранилище не пустое загружаем из него данные
 иначе загружаем данные из json и сохраняем в локальное хранилище
 */
+
     if (localStorage.getItem('note_list')) {
       try {
+
         this.load_from_localStorage('note_list');
 
         this.GET_NOTE_LIST_FROM_LOCAL(this.note_list);
@@ -102,14 +104,16 @@ export default {
 
     }
     else {
+      
       this.GET_NOTE_LIST_FROM_API()
       .then((response) => {
-      if (response.data){
-        console.log('Data arrived');
-      }
+        if (response.data){
+          console.log('Data arrived');
+          this.save_to_localStorage(response.data);
+        }
       });
       
-      this.save_to_localStorage();
+      
     }
   }
 }
@@ -119,8 +123,7 @@ export default {
 <style>
 
 .v-note-main {
-
-    justify-content: center;
+    display: block;
 
     margin-top: 15px;
     margin-bottom: 0px;
@@ -129,11 +132,17 @@ export default {
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
     border-radius: 5px 5px 5px 5px;
 }
-    
-.v-note-main_p_display {
 
-    align-self: center;
+.row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
+.row_cell {
+  flex: 1 1 0;
+  
 }
 
 .v-note-main_p_display__input {

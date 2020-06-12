@@ -3,7 +3,9 @@ import Vue from 'vue'
 export default {
     
         SET_NOTE_LIST_TO_STATE: (state, note_list) => {
+            console.log('note_list = ', note_list);
             state.note_list = note_list;
+            console.log('state ', state.note_list);
         },        
 
         SET_ADD_NOTE_IN_NOTE_LIST: (state, name_note) => {

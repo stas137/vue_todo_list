@@ -12,14 +12,14 @@
       <p>Вы действительно хотите удалить заметку: "{{note.name_note}}" со всеми задачами?</p>
     </v-popup>
 
-    <div style="display:block;">
+    <div>
         Заметка: {{note.name_note}} 
 
         <router-link :to="{name: 'note_edit', params: {note: note, index: index}}">
-          <button @click="show_note">✏️</button>
+          <button @click="show_note"><img src="../../assets/edit-property.png"/></button>
         </router-link>
 
-        <button v-on:click="show_v_popup">🗑️</button>
+        <button v-on:click="show_v_popup"><img src="../../assets/filled-trash.png"/></button>
     </div>
 
     <hr />
@@ -109,11 +109,14 @@ export default {
 <style>
 
 .v-note-list {
-    max-width: 500px;
+
+    min-width: 200px;
     margin: 5px;
-    padding: 15px;
+    padding: 5px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.7);
     border-radius: 5px 5px 5px 5px;
-    background-color: rgba(201, 247, 181, 0.3);
+    background-color: rgba(240, 240, 234, 0.438);
 }
+
+
 </style>
